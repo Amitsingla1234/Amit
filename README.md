@@ -22,8 +22,8 @@ In this project, you will develop a smart contract named MyToken using Solidity 
 3. Copy and paste the following code into the file:
 
     solidity
-   ```
-   // SPDX-License-Identifier: MIT
+ ```
+ // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.12 <0.9.0;
 
 contract Token { 
@@ -46,7 +46,7 @@ contract Token {
     }
   }
 }
-    
+```
 
 5. Compile the contract by clicking on the "Solidity Compiler" tab and then "Compile MyToken.sol".
 6. Deploy the contract by navigating to the "Deploy & Run Transactions" tab, selecting your contract, and clicking "Deploy".
