@@ -2,50 +2,52 @@
 
 ## Simple Overview of Use/Purpose
 
-This project demonstrates how to create a simple token on the Ethereum blockchain using Solidity. It covers fundamental concepts such as storing token details, minting new tokens, and burning existing tokens.
+This project is about creating a simple token on the Ethereum blockchain using Solidity. The token will have basic functionalities such as storing token details, minting new tokens, and burning existing tokens. This is a fundamental exercise for understanding how tokens work on blockchain platforms.
 
 ## Description
 
-You will develop a smart contract named MyToken using Solidity 0.8.18. This contract will include public variables for token details, a mapping for balances, a mint function to increase the supply, and a burn function to decrease it, ensuring sufficient balance before burning.
+In this project, you will develop a smart contract named MyToken using Solidity version 0.8.18. This contract will include public variables to store details about the token such as its name, abbreviation, and total supply. Additionally, it will have a mapping to keep track of token balances for different addresses. The contract will feature a mint function to increase the total supply and the balance of a given address, and a burn function to reduce the total supply and balance of a given address, ensuring that sufficient balance exists before burning.
 
 ## Getting Started
 
 ### Installing
 
-1. Visit the [Remix IDE](https://remix.ethereum.org/).
-2. No installations are required as Remix is an online IDE.
+1. Visit the Remix IDE website: [Remix](https://remix.ethereum.org/)
+2. No specific installations are required as Remix is an online IDE.
 
 ### Executing Program
 
-1. Open Remix IDE.
-2. Create a new file named MyToken.sol.
+1. Open Remix IDE in your web browser.
+2. Create a new file and name it MyToken.sol.
 3. Copy and paste the following code into the file:
 
-solidity
-// SPDX-License-Identifier: MIT
-pragma solidity >=0.6.12 <0.9.0;
+    solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity 0.8.18;
 
-contract Token {
- 
- string public tokenname = "Amit Singla";
- string public tokenAbbrv = "Ami";
- uint public totalsupply = 0;
+    contract MyToken {
 
- mapping(address => uint) public balances;
+        // public variables here
+        string public tokenName = "Amit Singla";
+        string public tokenAbbr = "Ami";
+        uint public totalSupply = 0;
 
- function mint(address tokenaddress, uint value) public {
-  totalsupply += value;
-  balances[tokenaddress] += value;
- }
+        // mapping variable here
+        mapping(address => uint) public balances;
 
- function burn(address tokenaddress, uint value) public {
-  if (balances[tokenaddress] >= value) {
-   totalsupply -= value;
-   balances[tokenaddress] -= value;
-  }
- }
-}
+        // mint function
+        function mint(address _to, uint _value) public {
+            totalSupply += _value;
+            balances[_to] += _value;
+        }
 
+        // burn function
+        function burn(address _from, uint _value) public {
+            require(balances[_from] >= _value, "Insufficient balance");
+            totalSupply -= _value;
+            balances[_from] -= _value;
+        }
+    }
     
 
 4. Compile the contract by clicking on the "Solidity Compiler" tab and then "Compile MyToken.sol".
@@ -66,7 +68,7 @@ For further assistance, you can refer to the Remix documentation or run the help
 
 Contributors:
 
-- Amit Singla  
+- Amit Singla
   - GitHub: [@Amitsingla1234](https://github.com/Amitsingla1234)
 
 ## License
