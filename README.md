@@ -23,32 +23,29 @@ In this project, you will develop a smart contract named MyToken using Solidity 
 
     solidity
    ```
-    // SPDX-License-Identifier: MIT
-    pragma solidity 0.8.18;
+   // SPDX-License-Identifier: MIT
+pragma solidity >=0.6.12 <0.9.0;
 
-    contract MyToken {
+contract Token { 
 
-        // public variables here
-        string public tokenName = "Amit Singla";
-        string public tokenAbbr = "Ami";
-        uint public totalSupply = 0;
+  string public tokenname = "Amit Singla";
+  string public tokenAbbrv = "Ami";
+  uint public totalsupply = 0;
 
-        // mapping variable here
-        mapping(address => uint) public balances;
+  mapping(address =>uint) public balances;
 
-        // mint function
-        function mint(address _to, uint _value) public {
-            totalSupply += _value;
-            balances[_to] += _value;
-        }
+  function mint(address tokenaddress, uint value) public {
+  totalsupply += value;
+  balances[tokenaddress] += value;
+  }
 
-        // burn function
-        function burn(address _from, uint _value) public {
-            require(balances[_from] >= _value, "Insufficient balance");
-            totalSupply -= _value;
-            balances[_from] -= _value;
-        }
+  function burn(address tokenaddress, uint value) public {
+    if (balances[tokenaddress] >= value) {
+      totalsupply -= value;
+      balances[tokenaddress] -= value;
     }
+  }
+}
     
 
 5. Compile the contract by clicking on the "Solidity Compiler" tab and then "Compile MyToken.sol".
